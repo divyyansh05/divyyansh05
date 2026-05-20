@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Divyansh Shrivastava — Data & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C8A96E;
+  --gold-light:#E8C98E;
+  --bg:#080808;
+  --bg2:#111111;
+  --bg3:#181818;
+  --border:#222222;
+  --text:#F0EBE0;
+  --muted:#6a6a6a;
+  --muted2:#4a4a4a;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none}
+
+/* Custom cursor */
+.cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.1s;mix-blend-mode:difference}
+.cursor-follower{position:fixed;width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transition:all 0.15s ease;opacity:0.5}
+
+/* Canvas */
+#canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.4}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s}
+nav.scrolled{background:rgba(8,8,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 60px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);letter-spacing:1px;text-decoration:none}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;font-weight:500}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif}
+.nav-cta:hover{background:var(--gold);color:var(--bg)}
+
+/* Hero */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:0 60px;z-index:1}
+.hero-content{max-width:900px}
+.hero-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.2s forwards}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,96px);font-weight:900;line-height:1;color:var(--text);margin-bottom:16px;opacity:0;animation:fadeUp 0.8s 0.4s forwards}
+.hero-name span{color:var(--gold)}
+.hero-tagline{font-size:clamp(16px,2vw,22px);color:var(--muted);margin-bottom:40px;font-weight:300;opacity:0;animation:fadeUp 0.8s 0.6s forwards;min-height:36px}
+.typewriter{color:var(--gold-light);font-family:'JetBrains Mono',monospace;font-size:clamp(14px,1.8vw,18px)}
+.cursor-blink{animation:blink 1s infinite}
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;opacity:0;animation:fadeUp 0.8s 0.8s forwards}
+.badge{padding:8px 16px;border:1px solid var(--border);font-size:12px;letter-spacing:1px;color:var(--muted);font-family:'JetBrains Mono',monospace;transition:all 0.3s}
+.badge:hover{border-color:var(--gold);color:var(--gold)}
+.hero-ctas{display:flex;gap:20px;opacity:0;animation:fadeUp 0.8s 1s forwards}
+.btn-primary{background:var(--gold);color:var(--bg);padding:16px 40px;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.3s;display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-secondary{border:1px solid var(--border);color:var(--muted);padding:16px 40px;font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;display:inline-block}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:40px;left:60px;display:flex;align-items:center;gap:12px;color:var(--muted2);font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:0;animation:fadeUp 0.8s 1.2s forwards}
+.scroll-line{width:40px;height:1px;background:var(--muted2)}
+
+/* Sections */
+section{position:relative;z-index:1;padding:120px 60px}
+.section-header{margin-bottom:80px}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:3px;margin-bottom:12px;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:700;color:var(--text);line-height:1.1}
+.section-line{width:60px;height:2px;background:var(--gold);margin-top:24px}
+
+/* About */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:20px;font-size:15px}
+.about-text p strong{color:var(--text)}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.stat-card{background:var(--bg2);padding:32px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:48px;color:var(--gold);font-weight:700;display:block;line-height:1}
+.stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px;display:block}
+.about-domains{margin-top:40px}
+.domain-item{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)}
+.domain-item:last-child{border-bottom:none}
+.domain-icon{width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:6px}
+.domain-name{font-size:13px;color:var(--text);font-weight:500;margin-bottom:4px}
+.domain-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* Experience */
+#experience{background:var(--bg)}
+.exp-timeline{position:relative;padding-left:2px}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:60px;margin-bottom:80px;opacity:0;transform:translateY(30px);transition:all 0.6s}
+.exp-item.visible{opacity:1;transform:translateY(0)}
+.exp-meta{text-align:right;padding-top:4px}
+.exp-period{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:1px;display:block;margin-bottom:8px}
+.exp-company{font-size:13px;color:var(--muted);line-height:1.6}
+.exp-body{border-left:1px solid var(--border);padding-left:40px;position:relative}
+.exp-body::before{content:'';position:absolute;left:-5px;top:8px;width:9px;height:9px;border:1px solid var(--gold);background:var(--bg);border-radius:50%}
+.exp-role{font-family:'Playfair Display',serif;font-size:24px;color:var(--text);margin-bottom:8px;font-weight:700}
+.exp-tag{display:inline-block;padding:4px 12px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.exp-bullets{list-style:none}
+.exp-bullets li{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:10px;padding-left:20px;position:relative}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:12px}
+.exp-tech{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tech-tag{padding:4px 10px;background:var(--bg3);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+
+/* Projects */
+#projects{background:var(--bg2)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2px;background:var(--border)}
+.project-card{background:var(--bg2);padding:48px;position:relative;overflow:hidden;transition:all 0.4s;opacity:0;transform:translateY(30px);cursor:pointer}
+.project-card.visible{opacity:1;transform:translateY(0)}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.project-card:hover::before{transform:scaleX(1)}
+.project-card:hover{background:var(--bg3)}
+.project-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted2);letter-spacing:2px;margin-bottom:24px;display:block}
+.project-name{font-family:'Playfair Display',serif;font-size:28px;color:var(--text);margin-bottom:8px;font-weight:700;line-height:1.2}
+.project-sub{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block}
+.project-desc{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px}
+.project-metrics{display:flex;gap:24px;margin-bottom:28px;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.metric{text-align:center}
+.metric-val{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);font-weight:700;display:block;line-height:1}
+.metric-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);margin-top:4px;display:block}
+.project-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.stack-tag{padding:3px 8px;background:var(--bg);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted2)}
+.project-links{display:flex;gap:16px}
+.project-link{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;border-bottom:1px solid var(--border);padding-bottom:2px}
+.project-link:hover{color:var(--gold);border-color:var(--gold)}
+.project-featured{position:absolute;top:24px;right:24px;padding:4px 12px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.3);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+
+/* Skills */
+#skills{background:var(--bg)}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.skills-group{margin-bottom:48px}
+.skills-group-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:block}
+.skill-item{margin-bottom:16px}
+.skill-header{display:flex;justify-content:space-between;margin-bottom:8px}
+.skill-name{font-size:13px;color:var(--text);font-family:'JetBrains Mono',monospace}
+.skill-level{font-size:11px;color:var(--muted)}
+.skill-bar{height:2px;background:var(--border);position:relative;overflow:hidden}
+.skill-fill{height:100%;background:var(--gold);width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.skills-tags-section{margin-top:20px}
+.skills-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skills-tag{padding:8px 16px;border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);transition:all 0.3s}
+.skills-tag:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Education */
+#education{background:var(--bg2)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--border)}
+.edu-card{background:var(--bg2);padding:48px;opacity:0;transform:translateY(20px);transition:all 0.6s}
+.edu-card.visible{opacity:1;transform:translateY(0)}
+.edu-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:20px;display:block}
+.edu-degree{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);margin-bottom:8px;font-weight:700;line-height:1.3}
+.edu-school{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+.edu-highlights{list-style:none}
+.edu-highlights li{font-size:13px;color:var(--muted2);line-height:1.7;padding-left:16px;position:relative;margin-bottom:6px}
+.edu-highlights li::before{content:'·';position:absolute;left:0;color:var(--gold)}
+
+/* Contact */
+#contact{background:var(--bg);min-height:60vh;display:flex;align-items:center}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
+.contact-text h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);color:var(--text);margin-bottom:20px;font-weight:700;line-height:1.2}
+.contact-text p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:32px}
+.contact-links{display:flex;flex-direction:column;gap:16px}
+.contact-link{display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--muted);font-size:14px;transition:all 0.3s;padding:16px 0;border-bottom:1px solid var(--border)}
+.contact-link:hover{color:var(--gold)}
+.contact-link:hover .contact-link-arrow{transform:translateX(6px)}
+.contact-link-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);min-width:80px}
+.contact-link-value{flex:1}
+.contact-link-arrow{margin-left:auto;transition:transform 0.3s;color:var(--gold)}
+.contact-open{background:var(--bg2);border:1px solid var(--border);padding:48px}
+.open-badge{display:inline-block;padding:6px 16px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.3);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.open-dot{width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;margin-right:8px;animation:pulse 2s infinite}
+.open-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--text);margin-bottom:16px;font-weight:700}
+.open-roles{list-style:none}
+.open-roles li{font-size:13px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.open-roles li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+
+/* Footer */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.footer-left{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted2)}
+.footer-right{font-size:11px;color:var(--muted2);letter-spacing:1px}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+
+/* Noise overlay */
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:2;opacity:0.15}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border)}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* Mobile */
+@media(max-width:768px){
+nav{padding:20px 24px}
+nav.scrolled{padding:14px 24px}
+.nav-links{display:none}
+section{padding:80px 24px}
+#hero{padding:0 24px}
+.about-grid,.skills-layout,.contact-inner{grid-template-columns:1fr}
+.exp-item{grid-template-columns:1fr;gap:16px}
+.exp-meta{text-align:left}
+.edu-grid{grid-template-columns:1fr}
+.projects-grid{grid-template-columns:1fr}
+footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="follower"></div>
+
+<canvas id="canvas"></canvas>
+
+<nav id="nav">
+  <a href="#hero" class="nav-logo">DS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:divyyansh99@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Madrid, Spain · Available June 2026</span>
+    <h1 class="hero-name">Divyansh<br/><span>Shrivastava</span></h1>
+    <div class="hero-tagline">
+      <span class="typewriter" id="typewriter"></span><span class="cursor-blink">|</span>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">Python · SQL · PySpark</span>
+      <span class="badge">LLMs · RAG · NL-to-SQL</span>
+      <span class="badge">AWS · GCP · Databricks</span>
+      <span class="badge">dbt · Airflow · Kafka</span>
+      <span class="badge">Real Madrid Internship</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="https://linkedin.com/in/divyyansh05" target="_blank" class="btn-secondary">LinkedIn</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-line"></span>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01 / About</span>
+    <h2 class="section-title">Three domains.<br/>Two disciplines.<br/>One engineer.</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>Senior Data & AI Engineer</strong> with 5 years of experience across high-volume production data systems, enterprise data platforms, and — most recently — AI SaaS delivery at Real Madrid.</p>
+      <p>During my Real Madrid internship, I worked as an AI engineer: understood the business problem, ran social media and commercial analytics, then built and shipped <strong>ClubOS</strong> — an end-to-end AI SaaS tool used directly by senior club stakeholders.</p>
+      <p>My background spans three distinct domains and two engineering disciplines — which is unusual and deliberately so. I don't prototype AI demos. I ship systems that real stakeholders use.</p>
+      <p>Currently completing an <strong>MSc in Sports Analytics</strong> at Universidad Europea de Madrid (Real Madrid Graduate School). Finishing June 2026. Actively looking for my next role.</p>
+      <div class="about-domains">
+        <div class="domain-item">
+          <span class="domain-icon"></span>
+          <div>
+            <div class="domain-name">Honeywell Technology Solutions</div>
+            <div class="domain-desc">Built high-volume production data pipelines processing streams from 1,000+ connected sources — owning ingestion, storage optimization, and query performance at product-company standards.</div>
+          </div>
+        </div>
+        <div class="domain-item">
+          <span class="domain-icon"></span>
+          <div>
+            <div class="domain-name">HashedIn by Deloitte</div>
+            <div class="domain-desc">Architected enterprise cloud data platforms serving cross-functional teams across marketing, BI, operations, and risk. Tech lead mentoring 4 engineers.</div>
+          </div>
+        </div>
+        <div class="domain-item">
+          <span class="domain-icon"></span>
+          <div>
+            <div class="domain-name">Real Madrid C.F.</div>
+            <div class="domain-desc">Operated as an AI engineer — owning the full stack from data ingestion to LLM-powered application delivery for non-technical decision-makers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Major Domains</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">15K+</span>
+          <span class="stat-label">Players in ScoutIQ</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">Pipeline Speedup</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">02 / Experience</span>
+    <h2 class="section-title">Where I've<br/>shipped.</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Oct 2025 — Jun 2026</span>
+        <div class="exp-company">Madrid, Spain</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">AI Engineer (Internship)</div>
+        <span class="exp-tag">Real Madrid C.F.</span>
+        <ul class="exp-bullets">
+          <li>Identified core business problem: disconnected social media signals, commercial performance data, and match data with no unified decision-support layer for non-technical leadership</li>
+          <li>Built ClubOS end-to-end — integrated YouTube, Reddit, historical commercial data, and match performance into a single AI SaaS platform with LLM-generated scenario narratives</li>
+          <li>Designed and implemented full data layer: ingestion pipelines, domain data products, Gold-layer transformation on Databricks, and retrieval architecture for LLM context</li>
+          <li>Delivered to senior club stakeholders operating to professional football department standards — a working tool in active use, not a prototype</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="tech-tag">Python</span><span class="tech-tag">Databricks</span><span class="tech-tag">Delta Lake</span><span class="tech-tag">LLMs</span><span class="tech-tag">RAG</span><span class="tech-tag">Anthropic API</span><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">dbt</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Jun 2021 — Oct 2024</span>
+        <div class="exp-company">Bengaluru, India</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Senior Data Engineer</div>
+        <span class="exp-tag">HashedIn by Deloitte</span>
+        <ul class="exp-bullets">
+          <li>Architected cloud data lakehouse on AWS using Apache Iceberg — multi-zone design (raw → curated → semantic) serving 6+ cross-functional teams with column-level security</li>
+          <li>Designed semantic data layer on AWS and GCP — star schemas, wide tables, aggregation layers for QuickSight and Power BI; dbt-governed transformation with full lineage tracking</li>
+          <li>Implemented CDC ingestion using Kafka and AWS Glue Streaming — replaced daily batch loads with sub-hour SLA delivery across critical reporting domains</li>
+          <li>Deployed RAG pipeline using Amazon Bedrock — first LLM system shipped to production in the team</li>
+          <li>Led developer experience improvements: shared Python libraries, GitLab CI pipelines — cut onboarding time 50%; mentored 4 engineers, reduced production defects 30%</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="tech-tag">Python</span><span class="tech-tag">PySpark</span><span class="tech-tag">dbt</span><span class="tech-tag">Airflow</span><span class="tech-tag">Kafka</span><span class="tech-tag">AWS</span><span class="tech-tag">GCP</span><span class="tech-tag">Databricks</span><span class="tech-tag">Delta Lake</span><span class="tech-tag">Iceberg</span><span class="tech-tag">Terraform</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Oct 2019 — May 2021</span>
+        <div class="exp-company">Bengaluru, India</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Big Data Engineer</div>
+        <span class="exp-tag">Honeywell Technology Solutions</span>
+        <ul class="exp-bullets">
+          <li>Built high-volume production data pipelines processing streams from 1,000+ connected sources — owned ingestion with schema validation and deduplication at source</li>
+          <li>Optimised distributed query performance by 35% through strategic partitioning, bucketing, and cluster tuning</li>
+          <li>Designed data flows supporting predictive maintenance AI models — engineered feature-rich datasets enabling early-failure detection</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="tech-tag">Hadoop</span><span class="tech-tag">Hive</span><span class="tech-tag">Sqoop</span><span class="tech-tag">HDFS</span><span class="tech-tag">Oracle DB</span><span class="tech-tag">MySQL</span><span class="tech-tag">Python</span><span class="tech-tag">SQL</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">03 / Projects</span>
+    <h2 class="section-title">Things I've<br/>built.</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="project-featured">Real Madrid Internship</span>
+      <span class="project-num">01</span>
+      <h3 class="project-name">ClubOS</h3>
+      <span class="project-sub">AI Commercial Intelligence Platform</span>
+      <p class="project-desc">End-to-end AI SaaS tool built during Real Madrid internship. Automatically processes digital channel data, benchmarks against elite European clubs, and delivers an AI-generated ranked priority board to club leadership.</p>
+      <div class="project-metrics">
+        <div class="metric"><span class="metric-val">52</span><span class="metric-label">Metrics</span></div>
+        <div class="metric"><span class="metric-val">5</span><span class="metric-label">Clubs</span></div>
+        <div class="metric"><span class="metric-val">103</span><span class="metric-label">Mo. History</span></div>
+        <div class="metric"><span class="metric-val">23</span><span class="metric-label">Auto Tests</span></div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Databricks</span><span class="stack-tag">LLMs</span><span class="stack-tag">RAG</span><span class="stack-tag">React</span><span class="stack-tag">FastAPI</span><span class="stack-tag">dbt</span><span class="stack-tag">Delta Lake</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/divyyansh05/ClubOS" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-featured">MSc Final Project</span>
+      <span class="project-num">02</span>
+      <h3 class="project-name">ScoutIQ</h3>
+      <span class="project-sub">Football Scouting Intelligence Platform</span>
+      <p class="project-desc">Production-grade football scouting platform covering 15,000+ players across Europe's top 5 leagues. Role-based scoring engine, player similarity engine, and an AI Scout Assistant answering natural language recruitment queries via the Anthropic API.</p>
+      <div class="project-metrics">
+        <div class="metric"><span class="metric-val">15K+</span><span class="metric-label">Players</span></div>
+        <div class="metric"><span class="metric-val">13</span><span class="metric-label">Profiles</span></div>
+        <div class="metric"><span class="metric-val">5</span><span class="metric-label">Leagues</span></div>
+        <div class="metric"><span class="metric-val">20+</span><span class="metric-label">Metrics</span></div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">FastAPI</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">DuckDB</span><span class="stack-tag">Anthropic API</span><span class="stack-tag">NL-to-SQL</span><span class="stack-tag">React</span><span class="stack-tag">Airflow</span><span class="stack-tag">Docker</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/divyyansh05/scoutiq" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-num">03</span>
+      <h3 class="project-name">Urban Pulse</h3>
+      <span class="project-sub">Multi-Cloud Data Lakehouse</span>
+      <p class="project-desc">Production portfolio project ingesting NYC 311, NYPD crime, TfL London transit, AirNow EPA, and Open-Meteo data into a multi-cloud lakehouse. Full dbt transformation layer with 33+ automated data quality tests.</p>
+      <div class="project-metrics">
+        <div class="metric"><span class="metric-val">5</span><span class="metric-label">APIs</span></div>
+        <div class="metric"><span class="metric-val">33+</span><span class="metric-label">Unit Tests</span></div>
+        <div class="metric"><span class="metric-val">4</span><span class="metric-label">Airflow DAGs</span></div>
+        <div class="metric"><span class="metric-val">3</span><span class="metric-label">Clouds</span></div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">GCP</span><span class="stack-tag">AWS</span><span class="stack-tag">Databricks</span><span class="stack-tag">dbt</span><span class="stack-tag">Airflow</span><span class="stack-tag">Docker</span><span class="stack-tag">BigQuery</span><span class="stack-tag">Terraform</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/divyyansh05/urban-pulse-platform" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-num">04</span>
+      <h3 class="project-name">StatsBomb Viz</h3>
+      <span class="project-sub">Tactical Analysis Dashboard</span>
+      <p class="project-desc">Interactive football analytics dashboard using StatsBomb open event data. Pass networks, shot maps, player heatmaps, pressing metrics. Identified Leicester City's 2015/16 title was built on deliberately low pressing intensity — 3rd lowest PPDA among top-6 clubs.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">mplsoccer</span><span class="stack-tag">Streamlit</span><span class="stack-tag">StatsBomb API</span><span class="stack-tag">Plotly</span><span class="stack-tag">pandas</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/divyyansh05/statsbomb-viz" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">04 / Skills</span>
+    <h2 class="section-title">My toolkit.</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-layout">
+    <div>
+      <div class="skills-group">
+        <span class="skills-group-title">AI & LLM Engineering</span>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">LLMs · RAG Pipelines</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">NL-to-SQL · Prompt Engineering</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Anthropic API · Amazon Bedrock</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">MLflow · Feature Engineering</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+      </div>
+      <div class="skills-group">
+        <span class="skills-group-title">Data Engineering</span>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Python · SQL</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">PySpark · Databricks</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">dbt · Apache Airflow</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Kafka · CDC Ingestion</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skills-group">
+        <span class="skills-group-title">Cloud Platforms</span>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">AWS (S3, Glue, EMR, Bedrock)</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">GCP (BigQuery, Dataflow)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Azure (Synapse, Data Factory)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Terraform · Docker</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+      </div>
+      <div class="skills-group">
+        <span class="skills-group-title">Football Analytics</span>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">StatsBomb · Wyscout · SkillCorner</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">xG · xA · PPDA · Progressive Metrics</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">mplsoccer · Plotly · Streamlit</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+      </div>
+      <div class="skills-tags-section">
+        <span class="skills-group-title">Also familiar with</span>
+        <div class="skills-tags">
+          <span class="skills-tag">FastAPI</span><span class="skills-tag">React</span><span class="skills-tag">PostgreSQL</span><span class="skills-tag">DuckDB</span><span class="skills-tag">Scala</span><span class="skills-tag">Delta Lake</span><span class="skills-tag">Apache Iceberg</span><span class="skills-tag">Tableau</span><span class="skills-tag">Power BI</span><span class="skills-tag">Snowflake</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-header">
+    <span class="section-num">05 / Education</span>
+    <h2 class="section-title">Academic<br/>foundation.</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <span class="edu-year">2025 — 2026</span>
+      <div class="edu-degree">MSc Sports Analytics</div>
+      <div class="edu-school">Universidad Europea de Madrid<br/>Real Madrid Graduate School</div>
+      <ul class="edu-highlights">
+        <li>Football performance analytics, event & tracking data pipelines</li>
+        <li>ML for scouting & player valuation, statistical modelling</li>
+        <li>Data internship with Real Madrid — ClubOS AI platform</li>
+        <li>Final Project: ScoutIQ — 15K+ player scouting intelligence platform</li>
+      </ul>
+    </div>
+    <div class="edu-card">
+      <span class="edu-year">2019</span>
+      <div class="edu-degree">PG Diploma, Big Data & Analytics</div>
+      <div class="edu-school">IACSD, Pune</div>
+      <ul class="edu-highlights">
+        <li>Distributed computing & Hadoop ecosystem</li>
+        <li>Data warehousing and analytics engineering</li>
+        <li>Technical foundation for enterprise data engineering career</li>
+      </ul>
+    </div>
+    <div class="edu-card">
+      <span class="edu-year">2014 — 2018</span>
+      <div class="edu-degree">B.E. Mechanical Engineering</div>
+      <div class="edu-school">ITM Universe, Gwalior</div>
+      <ul class="edu-highlights">
+        <li>Engineering fundamentals, systems thinking</li>
+        <li>Analytical problem-solving grounding</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <h2>Let's build<br/>something<br/><span style="color:var(--gold)">together.</span></h2>
+      <p>I'm finishing my MSc in June 2026 and actively looking for my next role. If you're building an AI product, a data platform, or a sports analytics system — let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:divyyansh99@gmail.com" class="contact-link">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">divyyansh99@gmail.com</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://linkedin.com/in/divyyansh05" target="_blank" class="contact-link">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">linkedin.com/in/divyyansh05</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://github.com/divyyansh05" target="_blank" class="contact-link">
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-value">github.com/divyyansh05</span>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-open">
+      <div class="open-badge"><span class="open-dot"></span>Open to opportunities</div>
+      <div class="open-title">What I'm looking for</div>
+      <ul class="open-roles">
+        <li>AI Engineer at VC-backed startups</li>
+        <li>Senior Data Engineer at product companies</li>
+        <li>GTM-adjacent AI roles</li>
+        <li>Football Analytics · Scouting Analyst at clubs</li>
+        <li>Sports data companies (Opta, StatsBomb, Hudl)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2026 Divyansh Shrivastava · Madrid, Spain</div>
+  <div class="footer-right">Built with HTML · Deployed on GitHub Pages</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor=document.getElementById('cursor');
+const follower=document.getElementById('follower');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx-4+'px';cursor.style.top=my-4+'px'});
+setInterval(()=>{fx+=(mx-fx)*0.12;fy+=(my-fy)*0.12;follower.style.left=fx-16+'px';follower.style.top=fy-16+'px'},16);
+document.querySelectorAll('a,button,.project-card,.nav-cta').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';follower.style.transform='scale(1.5)'});
+  el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';follower.style.transform='scale(1)'});
+});
+
+// Canvas particles
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+let W=canvas.width=window.innerWidth,H=canvas.height=window.innerHeight;
+window.addEventListener('resize',()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight});
+const particles=[];
+const count=80;
+for(let i=0;i<count;i++){
+  particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*1.5+0.5,alpha:Math.random()*0.6+0.1});
+}
+function drawCanvas(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+    if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(200,169,110,${p.alpha})`;ctx.fill();
+  });
+  particles.forEach((p,i)=>{
+    for(let j=i+1;j<particles.length;j++){
+      const q=particles[j];
+      const d=Math.hypot(p.x-q.x,p.y-q.y);
+      if(d<120){
+        ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+        ctx.strokeStyle=`rgba(200,169,110,${0.08*(1-d/120)})`;ctx.lineWidth=0.5;ctx.stroke();
+      }
+    }
+  });
+  requestAnimationFrame(drawCanvas);
+}
+drawCanvas();
+
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+
+// Typewriter
+const phrases=['Senior Data & AI Engineer','Building AI systems that ship','Real Madrid · Deloitte · Honeywell','MSc Sports Analytics · Madrid'];
+let pi=0,ci=0,deleting=false;
+const tw=document.getElementById('typewriter');
+function type(){
+  const phrase=phrases[pi];
+  if(!deleting){
+    tw.textContent=phrase.slice(0,ci+1);ci++;
+    if(ci===phrase.length){deleting=true;setTimeout(type,2000);return;}
+  }else{
+    tw.textContent=phrase.slice(0,ci-1);ci--;
+    if(ci===0){deleting=false;pi=(pi+1)%phrases.length;}
+  }
+  setTimeout(type,deleting?40:80);
+}
+type();
+
+// Scroll animations
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      const fills=e.target.querySelectorAll('.skill-fill');
+      fills.forEach(f=>{f.style.width=f.dataset.width+'%'});
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.exp-item,.project-card,.edu-card').forEach(el=>observer.observe(el));
+
+// Skill bars separate observer
+const skillObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.skill-fill').forEach(f=>{f.style.width=f.dataset.width+'%'});
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('#skills').forEach(el=>skillObs.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
