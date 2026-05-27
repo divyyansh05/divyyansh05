@@ -4,7 +4,7 @@
 
 ### Senior Data & AI Engineer
 
-*Madrid, Spain · Available June 2026*
+*Madrid, Spain*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-divyyansh05-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/divyyansh05)
 [![Portfolio](https://img.shields.io/badge/Portfolio-divyyansh05.github.io-C8A96E?style=flat-square)](https://divyyansh05.github.io)
