@@ -27,7 +27,7 @@ I don't prototype AI demos. I ship systems that real stakeholders use.
 ## What I Built
 
 ### ClubOS — AI Commercial Intelligence Platform
-*Real Madrid Internship · 2025–2026*
+*Real Madrid Internship · MARCH 2026–JULY 2026*
 
 End-to-end AI SaaS tool built and shipped during my Real Madrid internship. Processes 52 metrics across 4 digital platforms, benchmarks against 5 elite European clubs, delivers an AI-generated ranked priority board to club leadership the moment monthly data arrives.
 
