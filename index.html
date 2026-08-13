@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Divyansh Shrivastava — Data & AI Engineer</title>
+<title>Divyansh Shrivastava — AI & Data Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -21,25 +21,17 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none}
-
-/* Custom cursor */
 .cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.1s;mix-blend-mode:difference}
 .cursor-follower{position:fixed;width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transition:all 0.15s ease;opacity:0.5}
-
-/* Canvas */
 #canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.4}
-
-/* Nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s}
 nav.scrolled{background:rgba(8,8,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 60px}
 .nav-logo{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);letter-spacing:1px;text-decoration:none}
 .nav-links{display:flex;gap:40px;list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;font-weight:500}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;text-decoration:none}
 .nav-cta:hover{background:var(--gold);color:var(--bg)}
-
-/* Hero */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:0 60px;z-index:1}
 .hero-content{max-width:900px}
 .hero-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.2s forwards}
@@ -58,15 +50,11 @@ nav.scrolled{background:rgba(8,8,8,0.92);backdrop-filter:blur(12px);border-botto
 .btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
 .hero-scroll{position:absolute;bottom:40px;left:60px;display:flex;align-items:center;gap:12px;color:var(--muted2);font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:0;animation:fadeUp 0.8s 1.2s forwards}
 .scroll-line{width:40px;height:1px;background:var(--muted2)}
-
-/* Sections */
 section{position:relative;z-index:1;padding:120px 60px}
 .section-header{margin-bottom:80px}
 .section-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:3px;margin-bottom:12px;display:block}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:700;color:var(--text);line-height:1.1}
 .section-line{width:60px;height:2px;background:var(--gold);margin-top:24px}
-
-/* About */
 #about{background:var(--bg2)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .about-text p{color:var(--muted);line-height:1.9;margin-bottom:20px;font-size:15px}
@@ -81,8 +69,6 @@ section{position:relative;z-index:1;padding:120px 60px}
 .domain-icon{width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:6px}
 .domain-name{font-size:13px;color:var(--text);font-weight:500;margin-bottom:4px}
 .domain-desc{font-size:13px;color:var(--muted);line-height:1.6}
-
-/* Experience */
 #experience{background:var(--bg)}
 .exp-timeline{position:relative;padding-left:2px}
 .exp-item{display:grid;grid-template-columns:200px 1fr;gap:60px;margin-bottom:80px;opacity:0;transform:translateY(30px);transition:all 0.6s}
@@ -96,11 +82,9 @@ section{position:relative;z-index:1;padding:120px 60px}
 .exp-tag{display:inline-block;padding:4px 12px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
 .exp-bullets{list-style:none}
 .exp-bullets li{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:10px;padding-left:20px;position:relative}
-.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:12px}
+.exp-bullets li::before{content:'\2192';position:absolute;left:0;color:var(--gold);font-size:12px}
 .exp-tech{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .tech-tag{padding:4px 10px;background:var(--bg3);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
-
-/* Projects */
 #projects{background:var(--bg2)}
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2px;background:var(--border)}
 .project-card{background:var(--bg2);padding:48px;position:relative;overflow:hidden;transition:all 0.4s;opacity:0;transform:translateY(30px);cursor:pointer}
@@ -122,8 +106,6 @@ section{position:relative;z-index:1;padding:120px 60px}
 .project-link{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;border-bottom:1px solid var(--border);padding-bottom:2px}
 .project-link:hover{color:var(--gold);border-color:var(--gold)}
 .project-featured{position:absolute;top:24px;right:24px;padding:4px 12px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.3);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
-
-/* Skills */
 #skills{background:var(--bg)}
 .skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px}
 .skills-group{margin-bottom:48px}
@@ -138,8 +120,6 @@ section{position:relative;z-index:1;padding:120px 60px}
 .skills-tags{display:flex;flex-wrap:wrap;gap:8px}
 .skills-tag{padding:8px 16px;border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);transition:all 0.3s}
 .skills-tag:hover{border-color:var(--gold);color:var(--gold)}
-
-/* Education */
 #education{background:var(--bg2)}
 .edu-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--border)}
 .edu-card{background:var(--bg2);padding:48px;opacity:0;transform:translateY(20px);transition:all 0.6s}
@@ -149,9 +129,7 @@ section{position:relative;z-index:1;padding:120px 60px}
 .edu-school{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
 .edu-highlights{list-style:none}
 .edu-highlights li{font-size:13px;color:var(--muted2);line-height:1.7;padding-left:16px;position:relative;margin-bottom:6px}
-.edu-highlights li::before{content:'·';position:absolute;left:0;color:var(--gold)}
-
-/* Contact */
+.edu-highlights li::before{content:'\00B7';position:absolute;left:0;color:var(--gold)}
 #contact{background:var(--bg);min-height:60vh;display:flex;align-items:center}
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
 .contact-text h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);color:var(--text);margin-bottom:20px;font-weight:700;line-height:1.2}
@@ -170,27 +148,17 @@ section{position:relative;z-index:1;padding:120px 60px}
 .open-roles{list-style:none}
 .open-roles li{font-size:13px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .open-roles li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
-
-/* Footer */
 footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
 .footer-left{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted2)}
 .footer-right{font-size:11px;color:var(--muted2);letter-spacing:1px}
-
-/* Animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
-
-/* Noise overlay */
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:2;opacity:0.15}
-
-/* Scrollbar */
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border)}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
-
-/* Mobile */
 @media(max-width:768px){
 nav{padding:20px 24px}
 nav.scrolled{padding:14px 24px}
@@ -207,10 +175,8 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
 </style>
 </head>
 <body>
-
 <div class="cursor" id="cursor"></div>
 <div class="cursor-follower" id="follower"></div>
-
 <canvas id="canvas"></canvas>
 
 <nav id="nav">
@@ -227,17 +193,17 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
 
 <section id="hero">
   <div class="hero-content">
-    <span class="hero-tag">Madrid, Spain · Available June 2026</span>
+    <span class="hero-tag">Madrid, Spain &middot; MSc Completed July 2026 &middot; Available Now</span>
     <h1 class="hero-name">Divyansh<br/><span>Shrivastava</span></h1>
     <div class="hero-tagline">
       <span class="typewriter" id="typewriter"></span><span class="cursor-blink">|</span>
     </div>
     <div class="hero-badges">
-      <span class="badge">Python · SQL · PySpark</span>
-      <span class="badge">LLMs · RAG · NL-to-SQL</span>
-      <span class="badge">AWS · GCP · Databricks</span>
-      <span class="badge">dbt · Airflow · Kafka</span>
-      <span class="badge">Real Madrid Internship</span>
+      <span class="badge">LangGraph &middot; Multi-Agent Systems</span>
+      <span class="badge">LLMs &middot; RAG &middot; ChromaDB</span>
+      <span class="badge">Python &middot; Databricks &middot; PySpark</span>
+      <span class="badge">AWS &middot; GCP &middot; Docker</span>
+      <span class="badge">Shipped @ Real Madrid</span>
     </div>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View My Work</a>
@@ -253,35 +219,35 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
 <section id="about">
   <div class="section-header">
     <span class="section-num">01 / About</span>
-    <h2 class="section-title">Three domains.<br/>Two disciplines.<br/>One engineer.</h2>
+    <h2 class="section-title">AI Engineer.<br/>5 years DE.<br/>Ships production systems.</h2>
     <div class="section-line"></div>
   </div>
   <div class="about-grid">
     <div class="about-text">
-      <p>I'm a <strong>Senior Data & AI Engineer</strong> with 5 years of experience across high-volume production data systems, enterprise data platforms, and — most recently — AI SaaS delivery at Real Madrid.</p>
-      <p>During my Real Madrid internship, I worked as an AI engineer: understood the business problem, ran social media and commercial analytics, then built and shipped <strong>ClubOS</strong> — an end-to-end AI SaaS tool used directly by senior club stakeholders.</p>
-      <p>My background spans three distinct domains and two engineering disciplines — which is unusual and deliberately so. I don't prototype AI demos. I ship systems that real stakeholders use.</p>
-      <p>Currently completing an <strong>MSc in Sports Analytics</strong> at Universidad Europea de Madrid (Real Madrid Graduate School). Finishing June 2026. Actively looking for my next role.</p>
+      <p>At Real Madrid, I worked as the sole <strong>AI Engineer</strong> &mdash; identified the business problem, designed the architecture, and shipped <strong>ClubOS</strong>: a multi-agent agentic AI platform deployed on GCP Cloud Run, used by senior club stakeholders for monthly commercial decision-making.</p>
+      <p>Before Real Madrid, I spent 5 years in production data engineering. At <strong>Deloitte</strong>, I was Tech Lead for a 4-engineer team &mdash; architected an AWS data lakehouse, shipped the team's first RAG system via Amazon Bedrock. At <strong>Honeywell</strong>, I engineered high-volume pipelines processing 1,000+ source streams.</p>
+      <p>I don't reach for an LLM when a SQL query or a Python function gives you a deterministic answer. The AI layer sits on top of governed data infrastructure &mdash; not instead of it.</p>
+      <p>MSc Sports Analytics completed July 2026 at Universidad Europea de Madrid (Real Madrid Graduate School). Actively looking for my next role.</p>
       <div class="about-domains">
         <div class="domain-item">
           <span class="domain-icon"></span>
           <div>
-            <div class="domain-name">Honeywell Technology Solutions</div>
-            <div class="domain-desc">Built high-volume production data pipelines processing streams from 1,000+ connected sources — owning ingestion, storage optimization, and query performance at product-company standards.</div>
+            <div class="domain-name">Real Madrid C.F.</div>
+            <div class="domain-desc">Sole AI Engineer &mdash; shipped ClubOS, a multi-agent agentic AI platform with LangGraph orchestration, ChromaDB vector retrieval, Databricks Medallion lakehouse, deployed on GCP Cloud Run. 604 automated tests.</div>
           </div>
         </div>
         <div class="domain-item">
           <span class="domain-icon"></span>
           <div>
             <div class="domain-name">HashedIn by Deloitte</div>
-            <div class="domain-desc">Architected enterprise cloud data platforms serving cross-functional teams across marketing, BI, operations, and risk. Tech lead mentoring 4 engineers.</div>
+            <div class="domain-desc">Tech Lead &mdash; architected enterprise AWS data lakehouse on Apache Iceberg, CDC via Kafka, dbt transformation with lineage tracking. Deployed first RAG system to production via Amazon Bedrock.</div>
           </div>
         </div>
         <div class="domain-item">
           <span class="domain-icon"></span>
           <div>
-            <div class="domain-name">Real Madrid C.F.</div>
-            <div class="domain-desc">Operated as an AI engineer — owning the full stack from data ingestion to LLM-powered application delivery for non-technical decision-makers.</div>
+            <div class="domain-name">Honeywell Technology Solutions</div>
+            <div class="domain-desc">Built high-volume production data pipelines processing 1,000+ source streams &mdash; ingestion, storage optimization, and query performance at product-company standards.</div>
           </div>
         </div>
       </div>
@@ -293,16 +259,16 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">3</span>
-          <span class="stat-label">Major Domains</span>
+          <span class="stat-num">604</span>
+          <span class="stat-label">Automated Tests</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">15K+</span>
-          <span class="stat-label">Players in ScoutIQ</span>
+          <span class="stat-num">59</span>
+          <span class="stat-label">Business Metrics</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">40%</span>
-          <span class="stat-label">Pipeline Speedup</span>
+          <span class="stat-num">22</span>
+          <span class="stat-label">Validated Signals</span>
         </div>
       </div>
     </div>
@@ -319,60 +285,61 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
 
     <div class="exp-item">
       <div class="exp-meta">
-        <span class="exp-period">Oct 2025 — Jun 2026</span>
+        <span class="exp-period">Mar 2026 &mdash; Jul 2026</span>
         <div class="exp-company">Madrid, Spain</div>
       </div>
       <div class="exp-body">
-        <div class="exp-role">AI Engineer (Internship)</div>
+        <div class="exp-role">AI Engineer</div>
         <span class="exp-tag">Real Madrid C.F.</span>
         <ul class="exp-bullets">
-          <li>Identified core business problem: disconnected social media signals, commercial performance data, and match data with no unified decision-support layer for non-technical leadership</li>
-          <li>Built ClubOS end-to-end — integrated YouTube, Reddit, historical commercial data, and match performance into a single AI SaaS platform with LLM-generated scenario narratives</li>
-          <li>Designed and implemented full data layer: ingestion pipelines, domain data products, Gold-layer transformation on Databricks, and retrieval architecture for LLM context</li>
-          <li>Delivered to senior club stakeholders operating to professional football department standards — a working tool in active use, not a prototype</li>
+          <li>Shipped ClubOS &mdash; a multi-agent agentic AI platform processing 59 business metrics across 5 digital platforms, benchmarking against 5 elite European clubs, deployed on GCP Cloud Run</li>
+          <li>Built four LangGraph-orchestrated agents: Scout (three-tier hybrid retrieval via metric registry, BM25 skill files, ChromaDB vector search), Watchdog (deterministic anomaly detection), Investigator (ReAct agent with 6 tools), Briefer (executive summary generation)</li>
+          <li>Architected Databricks Medallion lakehouse (Bronze &rarr; Silver &rarr; Gold) with deterministic priority scoring and 22 statistically validated predictive signals (Pearson r &ge; 0.60) across 103 months</li>
+          <li>Deployed FastAPI backend with 20+ typed endpoints, React/TypeScript frontend, Pydantic v2 schema validation, keyless CI/CD via GitHub Actions &mdash; 604 automated tests</li>
+          <li>No-fabricated-numbers guardrail: every AI-generated claim must trace to a source-tagged tool result &mdash; ungrounded numbers rejected before reaching stakeholders</li>
         </ul>
         <div class="exp-tech">
-          <span class="tech-tag">Python</span><span class="tech-tag">Databricks</span><span class="tech-tag">Delta Lake</span><span class="tech-tag">LLMs</span><span class="tech-tag">RAG</span><span class="tech-tag">Anthropic API</span><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">dbt</span>
+          <span class="tech-tag">Python</span><span class="tech-tag">LangGraph</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">OpenAI API</span><span class="tech-tag">Databricks</span><span class="tech-tag">Delta Lake</span><span class="tech-tag">FastAPI</span><span class="tech-tag">React</span><span class="tech-tag">dbt</span><span class="tech-tag">GCP Cloud Run</span><span class="tech-tag">Docker</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-meta">
-        <span class="exp-period">Jun 2021 — Oct 2024</span>
+        <span class="exp-period">Jun 2021 &mdash; Oct 2024</span>
         <div class="exp-company">Bengaluru, India</div>
       </div>
       <div class="exp-body">
         <div class="exp-role">Senior Data Engineer</div>
         <span class="exp-tag">HashedIn by Deloitte</span>
         <ul class="exp-bullets">
-          <li>Architected cloud data lakehouse on AWS using Apache Iceberg — multi-zone design (raw → curated → semantic) serving 6+ cross-functional teams with column-level security</li>
-          <li>Designed semantic data layer on AWS and GCP — star schemas, wide tables, aggregation layers for QuickSight and Power BI; dbt-governed transformation with full lineage tracking</li>
-          <li>Implemented CDC ingestion using Kafka and AWS Glue Streaming — replaced daily batch loads with sub-hour SLA delivery across critical reporting domains</li>
-          <li>Deployed RAG pipeline using Amazon Bedrock — first LLM system shipped to production in the team</li>
-          <li>Led developer experience improvements: shared Python libraries, GitLab CI pipelines — cut onboarding time 50%; mentored 4 engineers, reduced production defects 30%</li>
+          <li>Tech Lead for a 4-engineer team &mdash; architected AWS data lakehouse on Apache Iceberg with governed multi-zone layout serving 6+ cross-functional teams with column-level security and dbt lineage tracking</li>
+          <li>Deployed RAG pipeline using Amazon Bedrock for internal knowledge Q&amp;A &mdash; retrieval architecture, prompt engineering, guardrails; first LLM system shipped to production</li>
+          <li>Built CDC ingestion via Kafka and AWS Glue Streaming &mdash; replaced 24-hour batch loads with sub-hour SLA delivery across critical reporting domains</li>
+          <li>Refactored Databricks/PySpark workloads on Delta Lake &mdash; reduced job execution time 40%; semantic data layer with star schemas for QuickSight and Power BI</li>
+          <li>Built platform observability (Grafana), shared Python libraries, GitLab CI pipelines &mdash; cut onboarding time 50%, reduced production defects 30%</li>
         </ul>
         <div class="exp-tech">
-          <span class="tech-tag">Python</span><span class="tech-tag">PySpark</span><span class="tech-tag">dbt</span><span class="tech-tag">Airflow</span><span class="tech-tag">Kafka</span><span class="tech-tag">AWS</span><span class="tech-tag">GCP</span><span class="tech-tag">Databricks</span><span class="tech-tag">Delta Lake</span><span class="tech-tag">Iceberg</span><span class="tech-tag">Terraform</span>
+          <span class="tech-tag">Python</span><span class="tech-tag">PySpark</span><span class="tech-tag">dbt</span><span class="tech-tag">Airflow</span><span class="tech-tag">Kafka</span><span class="tech-tag">AWS</span><span class="tech-tag">GCP</span><span class="tech-tag">Databricks</span><span class="tech-tag">Delta Lake</span><span class="tech-tag">Iceberg</span><span class="tech-tag">Bedrock</span><span class="tech-tag">Terraform</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-meta">
-        <span class="exp-period">Oct 2019 — May 2021</span>
+        <span class="exp-period">Oct 2019 &mdash; May 2021</span>
         <div class="exp-company">Bengaluru, India</div>
       </div>
       <div class="exp-body">
         <div class="exp-role">Big Data Engineer</div>
         <span class="exp-tag">Honeywell Technology Solutions</span>
         <ul class="exp-bullets">
-          <li>Built high-volume production data pipelines processing streams from 1,000+ connected sources — owned ingestion with schema validation and deduplication at source</li>
-          <li>Optimised distributed query performance by 35% through strategic partitioning, bucketing, and cluster tuning</li>
-          <li>Designed data flows supporting predictive maintenance AI models — engineered feature-rich datasets enabling early-failure detection</li>
+          <li>Built high-volume production data pipelines processing 1,000+ source streams &mdash; ingestion from Oracle and MySQL into HDFS with schema validation and deduplication at source</li>
+          <li>Boosted distributed query performance 35% through strategic partitioning, bucketing, and YARN cluster tuning</li>
+          <li>Designed ETL datasets feeding predictive maintenance ML models &mdash; enabling early-failure detection and real-time operational monitoring</li>
         </ul>
         <div class="exp-tech">
-          <span class="tech-tag">Hadoop</span><span class="tech-tag">Hive</span><span class="tech-tag">Sqoop</span><span class="tech-tag">HDFS</span><span class="tech-tag">Oracle DB</span><span class="tech-tag">MySQL</span><span class="tech-tag">Python</span><span class="tech-tag">SQL</span>
+          <span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">Hadoop</span><span class="tech-tag">Hive</span><span class="tech-tag">Sqoop</span><span class="tech-tag">HDFS</span><span class="tech-tag">PySpark</span><span class="tech-tag">Oracle DB</span>
         </div>
       </div>
     </div>
@@ -389,22 +356,22 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
   <div class="projects-grid">
 
     <div class="project-card">
-      <span class="project-featured">Real Madrid Internship</span>
+      <span class="project-featured">Real Madrid</span>
       <span class="project-num">01</span>
       <h3 class="project-name">ClubOS</h3>
-      <span class="project-sub">AI Commercial Intelligence Platform</span>
-      <p class="project-desc">End-to-end AI SaaS tool built during Real Madrid internship. Automatically processes digital channel data, benchmarks against elite European clubs, and delivers an AI-generated ranked priority board to club leadership.</p>
+      <span class="project-sub">Agentic AI Platform</span>
+      <p class="project-desc">Multi-agent agentic AI platform built as sole AI Engineer at Real Madrid. Four LangGraph-orchestrated agents process digital channel data, benchmark against elite European clubs, and deliver ranked priorities with predictive signals to club leadership. Deployed on GCP Cloud Run.</p>
       <div class="project-metrics">
-        <div class="metric"><span class="metric-val">52</span><span class="metric-label">Metrics</span></div>
-        <div class="metric"><span class="metric-val">5</span><span class="metric-label">Clubs</span></div>
+        <div class="metric"><span class="metric-val">59</span><span class="metric-label">Metrics</span></div>
+        <div class="metric"><span class="metric-val">22</span><span class="metric-label">Signals</span></div>
+        <div class="metric"><span class="metric-val">604</span><span class="metric-label">Tests</span></div>
         <div class="metric"><span class="metric-val">103</span><span class="metric-label">Mo. History</span></div>
-        <div class="metric"><span class="metric-val">23</span><span class="metric-label">Auto Tests</span></div>
       </div>
       <div class="project-stack">
-        <span class="stack-tag">Python</span><span class="stack-tag">Databricks</span><span class="stack-tag">LLMs</span><span class="stack-tag">RAG</span><span class="stack-tag">React</span><span class="stack-tag">FastAPI</span><span class="stack-tag">dbt</span><span class="stack-tag">Delta Lake</span>
+        <span class="stack-tag">LangGraph</span><span class="stack-tag">ChromaDB</span><span class="stack-tag">OpenAI API</span><span class="stack-tag">Databricks</span><span class="stack-tag">FastAPI</span><span class="stack-tag">React</span><span class="stack-tag">dbt</span><span class="stack-tag">GCP</span><span class="stack-tag">Docker</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/divyyansh05/ClubOS" target="_blank" class="project-link">GitHub →</a>
+        <a href="https://github.com/divyyansh05/ClubOS" target="_blank" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
 
@@ -413,7 +380,7 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
       <span class="project-num">02</span>
       <h3 class="project-name">ScoutIQ</h3>
       <span class="project-sub">Football Scouting Intelligence Platform</span>
-      <p class="project-desc">Production-grade football scouting platform covering 15,000+ players across Europe's top 5 leagues. Role-based scoring engine, player similarity engine, and an AI Scout Assistant answering natural language recruitment queries via the Anthropic API.</p>
+      <p class="project-desc">Production-grade scouting platform covering 15,000+ players across Europe's top 5 leagues. Role-based scoring engine across 13 positional profiles, player similarity engine, and AI Scout Assistant powered by the Anthropic API.</p>
       <div class="project-metrics">
         <div class="metric"><span class="metric-val">15K+</span><span class="metric-label">Players</span></div>
         <div class="metric"><span class="metric-val">13</span><span class="metric-label">Profiles</span></div>
@@ -421,10 +388,10 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
         <div class="metric"><span class="metric-val">20+</span><span class="metric-label">Metrics</span></div>
       </div>
       <div class="project-stack">
-        <span class="stack-tag">FastAPI</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">DuckDB</span><span class="stack-tag">Anthropic API</span><span class="stack-tag">NL-to-SQL</span><span class="stack-tag">React</span><span class="stack-tag">Airflow</span><span class="stack-tag">Docker</span>
+        <span class="stack-tag">FastAPI</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">DuckDB</span><span class="stack-tag">Anthropic API</span><span class="stack-tag">React</span><span class="stack-tag">Airflow</span><span class="stack-tag">Docker</span><span class="stack-tag">dbt</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/divyyansh05/scoutiq" target="_blank" class="project-link">GitHub →</a>
+        <a href="https://github.com/divyyansh05/scoutiq" target="_blank" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
 
@@ -432,7 +399,7 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
       <span class="project-num">03</span>
       <h3 class="project-name">Urban Pulse</h3>
       <span class="project-sub">Multi-Cloud Data Lakehouse</span>
-      <p class="project-desc">Production portfolio project ingesting NYC 311, NYPD crime, TfL London transit, AirNow EPA, and Open-Meteo data into a multi-cloud lakehouse. Full dbt transformation layer with 33+ automated data quality tests.</p>
+      <p class="project-desc">Production portfolio project ingesting NYC 311, NYPD crime, TfL London transit, AirNow EPA, and Open-Meteo data into a multi-cloud lakehouse across GCP, AWS, and Databricks. Full dbt transformation layer with automated data quality testing.</p>
       <div class="project-metrics">
         <div class="metric"><span class="metric-val">5</span><span class="metric-label">APIs</span></div>
         <div class="metric"><span class="metric-val">33+</span><span class="metric-label">Unit Tests</span></div>
@@ -443,7 +410,7 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
         <span class="stack-tag">GCP</span><span class="stack-tag">AWS</span><span class="stack-tag">Databricks</span><span class="stack-tag">dbt</span><span class="stack-tag">Airflow</span><span class="stack-tag">Docker</span><span class="stack-tag">BigQuery</span><span class="stack-tag">Terraform</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/divyyansh05/urban-pulse-platform" target="_blank" class="project-link">GitHub →</a>
+        <a href="https://github.com/divyyansh05/urban-pulse-platform" target="_blank" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
 
@@ -451,12 +418,12 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
       <span class="project-num">04</span>
       <h3 class="project-name">StatsBomb Viz</h3>
       <span class="project-sub">Tactical Analysis Dashboard</span>
-      <p class="project-desc">Interactive football analytics dashboard using StatsBomb open event data. Pass networks, shot maps, player heatmaps, pressing metrics. Identified Leicester City's 2015/16 title was built on deliberately low pressing intensity — 3rd lowest PPDA among top-6 clubs.</p>
+      <p class="project-desc">Interactive football analytics dashboard using StatsBomb open event data. Pass networks, shot maps, player heatmaps, pressing metrics. Key finding: Leicester City's 2015/16 title was built on deliberately low pressing intensity &mdash; 3rd lowest PPDA among top-6 clubs.</p>
       <div class="project-stack">
         <span class="stack-tag">Python</span><span class="stack-tag">mplsoccer</span><span class="stack-tag">Streamlit</span><span class="stack-tag">StatsBomb API</span><span class="stack-tag">Plotly</span><span class="stack-tag">pandas</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/divyyansh05/statsbomb-viz" target="_blank" class="project-link">GitHub →</a>
+        <a href="https://github.com/divyyansh05/statsbomb-viz" target="_blank" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
 
@@ -472,38 +439,38 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
   <div class="skills-layout">
     <div>
       <div class="skills-group">
-        <span class="skills-group-title">AI & LLM Engineering</span>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">LLMs · RAG Pipelines</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">NL-to-SQL · Prompt Engineering</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">Anthropic API · Amazon Bedrock</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">MLflow · Feature Engineering</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+        <span class="skills-group-title">AI &amp; Agentic Engineering</span>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">LangGraph &middot; Multi-Agent Systems</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">RAG Pipelines &middot; Vector Search</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">OpenAI API &middot; Anthropic API</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Prompt Engineering &middot; Guardrails</span><span class="skill-level">Production</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">ChromaDB &middot; LangSmith &middot; RAGAS</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
       </div>
       <div class="skills-group">
         <span class="skills-group-title">Data Engineering</span>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">Python · SQL</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">PySpark · Databricks</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">dbt · Apache Airflow</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">Kafka · CDC Ingestion</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Python &middot; SQL</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">PySpark &middot; Databricks</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">dbt &middot; Apache Airflow</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Kafka &middot; CDC Ingestion</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
       </div>
     </div>
     <div>
       <div class="skills-group">
-        <span class="skills-group-title">Cloud Platforms</span>
+        <span class="skills-group-title">Cloud &amp; Infrastructure</span>
         <div class="skill-item"><div class="skill-header"><span class="skill-name">AWS (S3, Glue, EMR, Bedrock)</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">GCP (BigQuery, Dataflow)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">Azure (Synapse, Data Factory)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">Terraform · Docker</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">GCP (BigQuery, Cloud Run)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Docker &middot; Terraform &middot; CI/CD</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">FastAPI &middot; React &middot; TypeScript</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
       </div>
       <div class="skills-group">
         <span class="skills-group-title">Football Analytics</span>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">StatsBomb · Wyscout · SkillCorner</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">xG · xA · PPDA · Progressive Metrics</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span class="skill-name">mplsoccer · Plotly · Streamlit</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">StatsBomb &middot; Wyscout &middot; SkillCorner</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">xG &middot; xA &middot; PPDA &middot; Progressive Metrics</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
       </div>
       <div class="skills-tags-section">
-        <span class="skills-group-title">Also familiar with</span>
+        <span class="skills-group-title">Also work with</span>
         <div class="skills-tags">
-          <span class="skills-tag">FastAPI</span><span class="skills-tag">React</span><span class="skills-tag">PostgreSQL</span><span class="skills-tag">DuckDB</span><span class="skills-tag">Scala</span><span class="skills-tag">Delta Lake</span><span class="skills-tag">Apache Iceberg</span><span class="skills-tag">Tableau</span><span class="skills-tag">Power BI</span><span class="skills-tag">Snowflake</span>
+          <span class="skills-tag">PostgreSQL</span><span class="skills-tag">DuckDB</span><span class="skills-tag">Delta Lake</span><span class="skills-tag">Apache Iceberg</span><span class="skills-tag">MLflow</span><span class="skills-tag">Pydantic</span><span class="skills-tag">Streamlit</span><span class="skills-tag">Plotly</span><span class="skills-tag">mplsoccer</span><span class="skills-tag">Tableau</span><span class="skills-tag">Power BI</span><span class="skills-tag">Snowflake</span><span class="skills-tag">MCP</span>
         </div>
       </div>
     </div>
@@ -518,28 +485,28 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
   </div>
   <div class="edu-grid">
     <div class="edu-card">
-      <span class="edu-year">2025 — 2026</span>
+      <span class="edu-year">2025 &mdash; 2026</span>
       <div class="edu-degree">MSc Sports Analytics</div>
       <div class="edu-school">Universidad Europea de Madrid<br/>Real Madrid Graduate School</div>
       <ul class="edu-highlights">
-        <li>Football performance analytics, event & tracking data pipelines</li>
-        <li>ML for scouting & player valuation, statistical modelling</li>
-        <li>Data internship with Real Madrid — ClubOS AI platform</li>
-        <li>Final Project: ScoutIQ — 15K+ player scouting intelligence platform</li>
+        <li>AI Engineering internship at Real Madrid &mdash; built and shipped ClubOS (agentic AI platform)</li>
+        <li>Final Project: ScoutIQ &mdash; 15K+ player scouting intelligence platform</li>
+        <li>Football performance analytics, ML for scouting, statistical modelling</li>
+        <li>Completed July 2026</li>
       </ul>
     </div>
     <div class="edu-card">
       <span class="edu-year">2019</span>
-      <div class="edu-degree">PG Diploma, Big Data & Analytics</div>
+      <div class="edu-degree">PG Diploma, Big Data &amp; Analytics</div>
       <div class="edu-school">IACSD, Pune</div>
       <ul class="edu-highlights">
-        <li>Distributed computing & Hadoop ecosystem</li>
+        <li>Distributed computing &amp; Hadoop ecosystem</li>
         <li>Data warehousing and analytics engineering</li>
-        <li>Technical foundation for enterprise data engineering career</li>
+        <li>Technical foundation for enterprise DE career</li>
       </ul>
     </div>
     <div class="edu-card">
-      <span class="edu-year">2014 — 2018</span>
+      <span class="edu-year">2014 &mdash; 2018</span>
       <div class="edu-degree">B.E. Mechanical Engineering</div>
       <div class="edu-school">ITM Universe, Gwalior</div>
       <ul class="edu-highlights">
@@ -554,46 +521,45 @@ footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
   <div class="contact-inner">
     <div class="contact-text">
       <h2>Let's build<br/>something<br/><span style="color:var(--gold)">together.</span></h2>
-      <p>I'm finishing my MSc in June 2026 and actively looking for my next role. If you're building an AI product, a data platform, or a sports analytics system — let's talk.</p>
+      <p>MSc completed. 5 years of production engineering. Shipped an agentic AI platform at Real Madrid. Looking for my next role &mdash; if you're building AI systems, data platforms, or sports analytics, let's talk.</p>
       <div class="contact-links">
         <a href="mailto:divyyansh99@gmail.com" class="contact-link">
           <span class="contact-link-label">Email</span>
           <span class="contact-link-value">divyyansh99@gmail.com</span>
-          <span class="contact-link-arrow">→</span>
+          <span class="contact-link-arrow">&rarr;</span>
         </a>
         <a href="https://linkedin.com/in/divyyansh05" target="_blank" class="contact-link">
           <span class="contact-link-label">LinkedIn</span>
           <span class="contact-link-value">linkedin.com/in/divyyansh05</span>
-          <span class="contact-link-arrow">→</span>
+          <span class="contact-link-arrow">&rarr;</span>
         </a>
         <a href="https://github.com/divyyansh05" target="_blank" class="contact-link">
           <span class="contact-link-label">GitHub</span>
           <span class="contact-link-value">github.com/divyyansh05</span>
-          <span class="contact-link-arrow">→</span>
+          <span class="contact-link-arrow">&rarr;</span>
         </a>
       </div>
     </div>
     <div class="contact-open">
-      <div class="open-badge"><span class="open-dot"></span>Open to opportunities</div>
+      <div class="open-badge"><span class="open-dot"></span>Available immediately</div>
       <div class="open-title">What I'm looking for</div>
       <ul class="open-roles">
         <li>AI Engineer at VC-backed startups</li>
+        <li>Forward Deployed Engineer</li>
         <li>Senior Data Engineer at product companies</li>
-        <li>GTM-adjacent AI roles</li>
-        <li>Football Analytics · Scouting Analyst at clubs</li>
-        <li>Sports data companies (Opta, StatsBomb, Hudl)</li>
+        <li>Applied AI &middot; ML Engineer roles</li>
+        <li>Football Analytics at clubs &amp; sports data companies</li>
       </ul>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-left">© 2026 Divyansh Shrivastava · Madrid, Spain</div>
-  <div class="footer-right">Built with HTML · Deployed on GitHub Pages</div>
+  <div class="footer-left">&copy; 2026 Divyansh Shrivastava &middot; Madrid, Spain</div>
+  <div class="footer-right">Built with code &middot; Deployed on GitHub Pages</div>
 </footer>
 
 <script>
-// Custom cursor
 const cursor=document.getElementById('cursor');
 const follower=document.getElementById('follower');
 let mx=0,my=0,fx=0,fy=0;
@@ -603,89 +569,53 @@ document.querySelectorAll('a,button,.project-card,.nav-cta').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';follower.style.transform='scale(1.5)'});
   el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';follower.style.transform='scale(1)'});
 });
-
-// Canvas particles
 const canvas=document.getElementById('canvas');
 const ctx=canvas.getContext('2d');
 let W=canvas.width=window.innerWidth,H=canvas.height=window.innerHeight;
 window.addEventListener('resize',()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight});
 const particles=[];
-const count=80;
-for(let i=0;i<count;i++){
+for(let i=0;i<80;i++){
   particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*1.5+0.5,alpha:Math.random()*0.6+0.1});
 }
 function drawCanvas(){
   ctx.clearRect(0,0,W,H);
   particles.forEach(p=>{
     p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0)p.x=W;if(p.x>W)p.x=0;
-    if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
     ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(200,169,110,${p.alpha})`;ctx.fill();
+    ctx.fillStyle='rgba(200,169,110,'+p.alpha+')';ctx.fill();
   });
   particles.forEach((p,i)=>{
     for(let j=i+1;j<particles.length;j++){
-      const q=particles[j];
-      const d=Math.hypot(p.x-q.x,p.y-q.y);
-      if(d<120){
-        ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
-        ctx.strokeStyle=`rgba(200,169,110,${0.08*(1-d/120)})`;ctx.lineWidth=0.5;ctx.stroke();
-      }
+      const q=particles[j];const d=Math.hypot(p.x-q.x,p.y-q.y);
+      if(d<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(200,169,110,'+(0.08*(1-d/120))+')';ctx.lineWidth=0.5;ctx.stroke();}
     }
   });
   requestAnimationFrame(drawCanvas);
 }
 drawCanvas();
-
-// Nav scroll
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
-
-// Typewriter
-const phrases=['Senior Data & AI Engineer','Building AI systems that ship','Real Madrid · Deloitte · Honeywell','MSc Sports Analytics · Madrid'];
+const phrases=['AI Engineer \u2014 Shipped at Real Madrid','Multi-Agent Systems \u00B7 LangGraph \u00B7 RAG','5yr Production DE \u00B7 Deloitte \u00B7 Honeywell','MSc Sports Analytics \u00B7 Madrid'];
 let pi=0,ci=0,deleting=false;
 const tw=document.getElementById('typewriter');
 function type(){
   const phrase=phrases[pi];
-  if(!deleting){
-    tw.textContent=phrase.slice(0,ci+1);ci++;
-    if(ci===phrase.length){deleting=true;setTimeout(type,2000);return;}
-  }else{
-    tw.textContent=phrase.slice(0,ci-1);ci--;
-    if(ci===0){deleting=false;pi=(pi+1)%phrases.length;}
-  }
+  if(!deleting){tw.textContent=phrase.slice(0,ci+1);ci++;if(ci===phrase.length){deleting=true;setTimeout(type,2000);return;}}
+  else{tw.textContent=phrase.slice(0,ci-1);ci--;if(ci===0){deleting=false;pi=(pi+1)%phrases.length;}}
   setTimeout(type,deleting?40:80);
 }
 type();
-
-// Scroll animations
 const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('visible');
-      const fills=e.target.querySelectorAll('.skill-fill');
-      fills.forEach(f=>{f.style.width=f.dataset.width+'%'});
-    }
-  });
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('.skill-fill').forEach(f=>{f.style.width=f.dataset.width+'%'});}});
 },{threshold:0.15});
 document.querySelectorAll('.exp-item,.project-card,.edu-card').forEach(el=>observer.observe(el));
-
-// Skill bars separate observer
 const skillObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.skill-fill').forEach(f=>{f.style.width=f.dataset.width+'%'});
-    }
-  });
+  entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-fill').forEach(f=>{f.style.width=f.dataset.width+'%'});}});
 },{threshold:0.2});
 document.querySelectorAll('#skills').forEach(el=>skillObs.observe(el));
-
-// Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
-  });
+  a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});});
 });
 </script>
 </body>
